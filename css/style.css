@@ -187,3 +187,74 @@ footer .copyright a:hover{
     flex-basis: 24%;
     cursor: pointer;
 }
+.single-product input:focus{
+  outline: none;
+}
+.buy-btn{
+    background-color: coral;
+    opacity: 1;
+    transition: 0.4s all;
+}
+.single-product .buy-btn:hover{
+    background-color: #1d1d1d;
+    color: white;
+}
+.single-product input{
+    height: 40px;
+    width: 80px;
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+}
+
+.adj{
+    height: 60% !important;
+    width: 30% !important;
+}
+
+
+
+.cart table{
+    width: 100%;
+    border-collapse: collapse;   
+}
+.cart .product-info{
+    display: flex;
+    flex-wrap: wrap;
+}
+.cart th{
+    text-align: left;
+    padding: 5px 3px;
+    color: white;
+    background-color: coral;
+}
+.cart td{
+    padding: 10px 20px;
+}
+.cart td img{
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+}
+.cart td input{
+     width: 40px;
+     height: 20px;
+     padding: 5px;
+     border: none;
+}
+.cart td input:focus{
+    outline: none;
+}
+.remove-btn{
+    color: coral;
+    text-decoration: none;
+    font-size: 14px;
+}
+.edit-btn{
+    color: coral;
+    text-decoration: none;
+    font-size: 14px;
+}
+.cart product-info p{
+     margin: 3px;
+}
