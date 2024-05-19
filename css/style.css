@@ -255,6 +255,93 @@ footer .copyright a:hover{
     text-decoration: none;
     font-size: 14px;
 }
-.cart product-info p{
-     margin: 3px;
+.cart .product-info p{
+    margin: 3px;
+}
+.total{
+    display: flex;
+    justify-content: flex-end;
+}
+.total table{
+    width: 100%;
+    max-width: 500px;
+    border-top: 3px solid orange;
+}
+th:last-child{
+    text-align: right;
+}
+td:last-child{
+    text-align: right;
+}
+.checkout-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#login-form{
+    width: 50%;
+    margin: 5px auto;
+    text-align: center;
+    padding: 20px;
+}
+#login-form input{
+    width: 50%;
+    margin: 5px auto;
+}
+#login-form #login-btn{
+    background-color: coral;
+    color: white;
+}
+#register-url{
+    color: coral;
+}
+#login-url{
+    color: coral;
+}
+#account-form{
+    width: 50%;
+    margin: 5px auto;
+    text-align: center;
+    padding: 20px;
+}
+#account-form input{
+    margin: 5px auto;
+}
+.change-btn{
+    color: white !important;
+    background-color: coral !important;
+}
+#logout-btn{
+    color: orange;
+    text-decoration: none;
+}
+#account-form input{
+     padding: 5px;
+     border-radius: 5px 1px solid black;
+     outline: none;
+}
+
+.orders td img{
+    width: 80px;
+    height: 80px;
+}
+.orders table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.orders .product-info{
+    display: flex;
+    flex-wrap: wrap;
+}
+.orders th{
+    text-align: left;
+    padding: 5px 10px;
+    color: white;
+    background-color: coral;
+}
+.orders th:nth-child(2){
+    text-align: right;
+}
+.orders td{
+    padding: 10px 20px;
 }
