@@ -345,3 +345,45 @@ td:last-child{
 .orders td{
     padding: 10px 20px;
 }
+
+
+#register-form{
+    width: 50%;
+    margin: 5px auto;
+    text-align: center;
+    padding: 20px;
+}
+#register-form input{
+    width: 50%;
+    margin: 5px auto;
+}
+#register-form #register-btn{
+    background-color: coral;
+    color: white;
+}
+
+
+#checkout-form .checkout-sm-ele{
+    display: inline-block;
+    width: 40%;
+    margin: 10px auto;
+}
+
+#checkout-form .checkout-lg-ele{
+    width: 90%;
+}
+
+#checkout-form .checkout-btn-container{
+    margin: 10px;
+    text-align: right;
+    margin-right: 40px;
+}
+
+#checkout-form #checkout-btn{
+         color:white;
+         background-color: coral;
+}
+
+#contact span{
+    color: coral;
+}
