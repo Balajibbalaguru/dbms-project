@@ -1,3 +1,12 @@
+<?php
+session_start();
+if(!empty($_SESSION['cart'])&& isset($_POST['checkout'])){
+       
+}
+else{
+  header("location: index.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +15,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <title>Document</title>
+    <title>login</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top bg-light py-2 shadow">
@@ -39,57 +48,45 @@
             <ul>
           </div>
         </div>
-      </nav>
-
-      <section class="cart container my-5 py-5">
-           <div class="container mt-2">
-             <h2 class="font-weight-bolde text-center">Your Cart</h2>
-             <hr>
-           </div>
-           <table class="mt-5 pt-5">
-            <tr>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
-            </tr>
-            <tr>
-                <td>
-                    <div class="product-info">
-                        <img src="assets/shoes.png" alt="">
-                        <div>
-                            <p>Shoe</p>
-                            <small><span>Rs.</span>2500</small><br>
-                            <a href="" class="remove-btn">Remove</a>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <input type="number" value="1">
-                    <a href="" class="edit-btn">Edit</a>
-                </td>
-                <td>
-                    <span>Rs.</span>
-                    <span class="price">2500</span>
-                </td>
-
-            </tr>
-           </table>
-           <div class="total">
-            <table>
-                <tr>
-                    <td>subtotal</td>
-                    <td>Rs.2500</td>
-                </tr>
-                <tr>
-                    <td>total</td>
-                    <td>Rs.2500</td>
-                </tr>
-            </table>
-           </div>
-           <div class="checkout-container">
-             <button class="btn checkout">Checkout</button>
-           </div>
+    </nav>
+      
+    <section class="my-1 py-1">
+        <div class="container text-center mt-3 pt-5">
+                <h1>Check Out</h1>
+            <hr class="mx-auto">
+        </div>
+        <div class="mx-auto container">
+            <form action="./server/place_order.php" method="POST" id="checkout-form">
+                <div class="form-group checkout-sm-ele">
+                    <label for="">Name</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+                   </div>
+               <div class="form-group checkout-sm-ele">
+                <label for="">Email</label>
+                <input type="email" class="form-control" id="checkout-email" name="email" placeholder="Email" required>
+               </div>
+               <div class="form-group checkout-sm-ele">
+                <label for="">Phone</label>
+                <input type="tel" class="form-control" id="checkout-password" name="phone" placeholder="Password" required>
+               </div>
+               <div class="form-group checkout-sm-ele">
+                <label for="">City</label>
+                <input type="text" class="form-control" id="checkout-city" name="city" placeholder="Confirm Password" required>
+               </div>
+               <div class="form-group checkout-lg-ele">
+                <label for="">Address</label>
+                <input type="text" class="form-control" id="checkout-address" name="address" placeholder="Email" required>
+               </div>
+               <div class="form-group checkout-btn-container">
+                <p>
+                  Total amount:Rs.<?php echo $_SESSION['total'];?>
+                </p>
+                <input type="submit" class="btn" id="checkout-btn" value="place order" name="place_order">
+               </div>
+            </form>
+        </div>
       </section>
+ 
 
       <footer class="mt-5 p-3">
         <div class="row container mx-auto">

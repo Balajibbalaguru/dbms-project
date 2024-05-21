@@ -33,7 +33,7 @@
                 <a class="nav-link" href="contactus.html">Contact Us</a>
               </li>
               <li class="nav-item">
-                <a href="cart.html"><i class="fa-solid fa-shopping-cart"></i></a>
+                <a href="cart.php"><i class="fa-solid fa-shopping-cart"></i></a>
                 <a href="account.html"><i class="fa-solid fa-user"></i></a>
               </li>
             <ul>

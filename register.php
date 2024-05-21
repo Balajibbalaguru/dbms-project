@@ -1,3 +1,41 @@
+<?php
+ 
+ if(isset($_POST['register'])){
+  $n=$_POST['name'];
+  $e=$_POST['email'];
+  $pass=$_POST['pass'];
+  $cp=$_POST['cpass'];
+
+  if($pass != $cp){
+    header("location: register.php?error=passwords does not match");
+  }
+  if(strlen($pass)<6){
+    header("location: register.php?error=passwords should contains atleast 6 characters!");
+  }
+
+  include('./server/connection.php');
+  $num_rows=0;
+  $ex=$conn->prepare("SELECT count(*) FROM users where email=?;");
+  $ex->bind_param('s',$e);
+  $ex->execute();
+  $ex->bind_result($num_rows);
+  $ex->fetch();
+
+  if($num_rows != 0){
+    header("location: register.php?error=User already exits!");
+  }
+
+
+  $st=$conn->prepare("INSERT INTO users (user_name,user_email,user_password) VALUES (?,?,?,?);");
+
+  $st->bind_param('sss',$n,$e,md5($pass));
+
+  $st->execute();
+
+ }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +84,8 @@
             <hr class="mx-auto">
         </div>
         <div class="mx-auto container">
-            <form action="" id="register-form">
+            <form action="register.php" id="register-form" method="POST">
+                <p style="color:red;"><?php echo $_GET['error'];?></p>
                 <div class="form-group">
                     <label for="">Name</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
@@ -64,7 +103,7 @@
                 <input type="password" class="form-control" id="login-email" name="cpass" placeholder="Confirm Password" required>
                </div>
                <div class="form-group">
-                <input type="submit" class="btn" id="register-btn" value="Register">
+                <input type="submit" class="btn" id="register-btn" value="Register" name="register">
                </div>
                <div class="form-group">
                 <a href="" id="register-url">Do you have an account? login</a>

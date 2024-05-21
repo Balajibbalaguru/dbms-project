@@ -1,3 +1,7 @@
+<?php
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,35 +47,13 @@
       
     <section class="my-1 py-1">
         <div class="container text-center mt-3 pt-5">
-                <h1>Check Out</h1>
+                <h1>Payment</h1>
             <hr class="mx-auto">
         </div>
-        <div class="mx-auto container">
-            <form action="" id="checkout-form">
-                <div class="form-group checkout-sm-ele">
-                    <label for="">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
-                   </div>
-               <div class="form-group checkout-sm-ele">
-                <label for="">Email</label>
-                <input type="email" class="form-control" id="checkout-email" name="email" placeholder="Email" required>
-               </div>
-               <div class="form-group checkout-sm-ele">
-                <label for="">Phone</label>
-                <input type="tel" class="form-control" id="checkout-password" name="phone" placeholder="Password" required>
-               </div>
-               <div class="form-group checkout-sm-ele">
-                <label for="">City</label>
-                <input type="text" class="form-control" id="checkout-city" name="city" placeholder="Confirm Password" required>
-               </div>
-               <div class="form-group checkout-lg-ele">
-                <label for="">Address</label>
-                <input type="text" class="form-control" id="checkout-address" name="address" placeholder="Email" required>
-               </div>
-               <div class="form-group checkout-btn-container">
-                <input type="submit" class="btn" id="checkout-btn" value="Checkout">
-               </div>
-            </form>
+        <div class="mx-auto container text-center">
+           <p><?php echo $_GET['order_status'];?></p>
+           <p>Total Payment: Rs.<?php echo $_SESSION['total'];?></p>
+           <input type="submit" value="Pay Now" class="btn btn-danger">
         </div>
       </section>
  

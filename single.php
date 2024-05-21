@@ -55,32 +55,39 @@ else{
           </div>
         </div>
       </nav>
-
+       
+      
      <section class="single-product my-5 pt-5">
         <div class="row mt-5">
-          <?php while($r=$s_product->fetch_assoc()){?>
+          <?php while($r = $s_product->fetch_assoc()) { ?>
             <div class="col-lg-5 col-md-6 col-sm-12">
-                <img src="./assets/<?php echo $r['product_image'];?>" alt="" class="img-fluid w-100 pb-1 adj">
+                <img src="./assets/<?php echo $r['product_image']; ?>" alt="" class="img-fluid w-100 pb-1 adj">
             </div>
            
              <div class="col-lg-6 col-md-12 col-12">
-                <div class="py-4"><?php echo $r['product_name'];?></div>
-                <h2><?php echo $r['product_price'];?></h2>
-                <input type="number" value="1">
-                <button class="buy-btn">Add To Cart</button>
+                <div class="py-4"><?php echo $r['product_name']; ?></div>
+                <h2>Rs.<?php echo $r['product_price']; ?></h2>
+                <form action="cart.php" method="POST">
+                    <input type="number" name="product_quantity" value="1">
+                    <input type="text" name="product_id">
+                    <input type="hidden" name="product_image" value="<?php echo $r['product_image']; ?>"/>
+                    <input type="hidden" name="product_name" value="<?php echo $r['product_name']; ?>"/>
+                    <input type="hidden" name="product_price" value="<?php echo $r['product_price']; ?>"/>
+                    <button class="buy-btn" type="submit" name="cart">Add To Cart</button>
+                </form>
                 <h4 class="mt-5 mb-5">Product details</h4>
-                <p><?php echo $r['product_description'];?></p>
+                <p><?php echo $r['product_description']; ?></p>
              </div>
-             <?php }?>
+          <?php } ?>
         </div>
      </section>
-
-     <section class="related-products" class="my-5 pb-5">
+    
+      <section class="related-products my-5 pb-5">
         <div class="container text-center">
             <h3>Related Products</h3>
             <hr>
-          </div>
-          <div class="row max-auto container-fluid">
+        </div>
+        <div class="row mx-auto container-fluid">
             <div class="product text-center col-lg-3 col-md-4 col-sm-12">
               <img src="./assets/shoes.png" alt="" class="img-fluid mb-3">
               <div class="star">
@@ -116,7 +123,7 @@ else{
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
               </div>
-              <h5 class="p-name">Watch</h5>
+              <h5 class="p-name">Jacket</h5>
               <h4 class="p-price">Rs.1800</h4>
               <button class="buy-now">Buy Now</button>
             </div>
@@ -129,12 +136,13 @@ else{
                 <i class="fas fa-star"></i>
                 <i class="fas fa-star"></i>
               </div>
-              <h5 class="p-name">Watch</h5>
+              <h5 class="p-name">Jacket</h5>
               <h4 class="p-price">Rs.1800</h4>
               <button class="buy-now">Buy Now</button>
             </div>
-          </div>
+        </div>
      </section>
+
 
       <footer class="mt-5 p-3">
         <div class="row container mx-auto">
