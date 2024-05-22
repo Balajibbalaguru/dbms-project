@@ -13,6 +13,33 @@ if(isset($_GET['loggout'])){
           exit();
          }
 }
+
+if(isset($_POST['change_pass'])){
+  $pass=$_POST['pass'];
+  $cpass=$_POST['cpass'];
+  if ($pass != $cpass) {
+    header("Location: account.php?error=Passwords do not match");
+    exit();
+}
+
+// Check if password length is at least 6 characters
+ else if(strlen($pass) < 6) {
+    header("Location: account.php?error=Password should contain at least 6 characters");
+    exit();
+}
+else{
+  $st=$conn->prepare("UPDATE users Set user_password=? where user_email=?");
+  $ue=$_SESSION['user_email'];
+  $st->bind_param('ss',password_hash($pass, PASSWORD_DEFAULT),$ue);
+  if($st->execute()){
+    header('location: account.php?message=password updated successfully');
+  }
+  else{
+    header("location: account.php?error=password can't be channged");
+  }
+}
+
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,6 +86,8 @@ if(isset($_GET['loggout'])){
     <section class="my-5 py-5">
          <div class="row container mx-auto">
             <div class="text-center mt-3 pt-5 col-lg-6 col-md-12 col-sm-12">
+            <p class="text-center" style="color:red;"><?php if(isset($_GET['register_success'])) {echo $_GET['register_success'];}?></p>
+            <p class="text-center" style="color:green;"><?php if(isset($_GET['login_success'])) {echo $_GET['login_success'];}?></p>
                 <h3 class="font-weight-bold">Account info</h3>
                 <hr class="mx-auto">
                 <div class="account-info">
@@ -70,19 +99,21 @@ if(isset($_GET['loggout'])){
                 </div>
             </div>
             <div class="col-lg-6 col-md-12 col-md-12">
-                <form action="" id="account-form">
+                <form action="account.php" id="account-form" method="POST">
+                  <p class="text-center" style="color:red;"><?php if(isset($_GET['error'])) {echo $_GET['error'];}?></p>
+                  <p class="text-center" style="color: blue"><?php if(isset($_GET['message'])){ echo $_GET['message'];}?></p>
                     <h3>Change Password</h3>
                     <hr>
                     <div class="form-group">
                         <label for="pass">Password</label>
-                        <input type="password" id="pass" placeholder="Password"  required>
+                        <input type="password" id="pass" placeholder="Password" name="pass"  required>
                     </div>
                     <div class="form-group">
                         <label for="cpass">Confirm Password</label>
-                        <input type="password" id="cpass" placeholder="Confirm Password"  required>
+                        <input type="password" id="cpass" placeholder="Confirm Password" name="cpass"  required>
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btn change-btn" value="Change Password">
+                        <input type="submit" class="btn change-btn" name="change_pass" value="Change Password">
                     </div>
                 </form>
             </div>

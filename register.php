@@ -39,11 +39,13 @@ if (isset($_POST['register'])) {
     $stmt->bind_param('sss', $n, $e, $hashed_pass);
 
     if ($stmt->execute()) {
+        $uid=$st->$insert_id;
+        $_SESSION['user_id']=$uid;
         $_SESSION['user_email'] = $e;
         $_SESSION['user_name'] = $n;
         $_SESSION['logged_in'] = true;
         $stmt->close();
-        header("Location: account.php?register=You registered successfully");
+        header("Location: account.php?register_sucsess=You registered successfully");
         exit();
     } else {
         $stmt->close();

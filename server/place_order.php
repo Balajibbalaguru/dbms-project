@@ -11,7 +11,7 @@ if(isset($_POST['place_order'])){
     $ad = $_POST['address'];
     $oc = $_SESSION['total'];
     $os = "on_hold";
-    $user_id = 1;
+    $user_id = $_SESSION['user_id'];
     $od = date('Y-m-d H:i:s'); // Use 'Y' for four-digit year
 
     // Prepare the SQL statement with the correct parameter types
