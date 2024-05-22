@@ -1,38 +1,60 @@
 <?php
- 
- if(isset($_POST['register'])){
-  $n=$_POST['name'];
-  $e=$_POST['email'];
-  $pass=$_POST['pass'];
-  $cp=$_POST['cpass'];
+session_start();
+include('./server/connection.php');
 
-  if($pass != $cp){
-    header("location: register.php?error=passwords does not match");
-  }
-  if(strlen($pass)<6){
-    header("location: register.php?error=passwords should contains atleast 6 characters!");
-  }
+if (isset($_POST['register'])) {
+    $n = $_POST['name'];
+    $e = $_POST['email'];
+    $pass = $_POST['pass'];
+    $cp = $_POST['cpass'];
 
-  include('./server/connection.php');
-  $num_rows=0;
-  $ex=$conn->prepare("SELECT count(*) FROM users where email=?;");
-  $ex->bind_param('s',$e);
-  $ex->execute();
-  $ex->bind_result($num_rows);
-  $ex->fetch();
+    // Check if passwords match
+    if ($pass != $cp) {
+        header("Location: register.php?error=Passwords do not match");
+        exit();
+    }
 
-  if($num_rows != 0){
-    header("location: register.php?error=User already exits!");
-  }
+    // Check if password length is at least 6 characters
+    if (strlen($pass) < 6) {
+        header("Location: register.php?error=Password should contain at least 6 characters");
+        exit();
+    }
 
+    // Check if user already exists
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM users WHERE user_email = ?");
+    $stmt->bind_param('s', $e);
+    $stmt->execute();
+    $stmt->bind_result($num_rows);
+    $stmt->fetch();
+    $stmt->close();
 
-  $st=$conn->prepare("INSERT INTO users (user_name,user_email,user_password) VALUES (?,?,?,?);");
+    if ($num_rows > 0) {
+        header("Location: register.php?error=User already exists");
+        exit();
+    }
 
-  $st->bind_param('sss',$n,$e,md5($pass));
+    // Insert new user into the database
+    $stmt = $conn->prepare("INSERT INTO users (user_name, user_email, user_password) VALUES (?, ?, ?)");
+    $hashed_pass = md5($pass); // MD5 is not recommended for password hashing; use password_hash instead
+    $stmt->bind_param('sss', $n, $e, $hashed_pass);
 
-  $st->execute();
-
- }
+    if ($stmt->execute()) {
+        $_SESSION['user_email'] = $e;
+        $_SESSION['user_name'] = $n;
+        $_SESSION['logged_in'] = true;
+        $stmt->close();
+        header("Location: account.php?register=You registered successfully");
+        exit();
+    } else {
+        $stmt->close();
+        header("Location: register.php?error=Could not create an account at the moment");
+        exit();
+    }
+}
+else if(isset($_SESSION['logged_in'])){
+  header("location: account.php ");
+  exit;
+}
 
 ?>
 
@@ -85,7 +107,7 @@
         </div>
         <div class="mx-auto container">
             <form action="register.php" id="register-form" method="POST">
-                <p style="color:red;"><?php echo $_GET['error'];?></p>
+                <p style="color:red;"><?php if(isset($_GET['error'])){ echo $_GET['error'];}?></p>
                 <div class="form-group">
                     <label for="">Name</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
@@ -106,7 +128,7 @@
                 <input type="submit" class="btn" id="register-btn" value="Register" name="register">
                </div>
                <div class="form-group">
-                <a href="" id="register-url">Do you have an account? login</a>
+                <a href="login.php" id="register-url">Do you have an account? login</a>
                </div>
             </form>
         </div>

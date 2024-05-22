@@ -1,3 +1,19 @@
+<?php
+session_start();
+include('./server/connection.php');
+if(isset($_SESSION['logged_in'])==false){
+  header('location: login.php');
+}
+if(isset($_GET['loggout'])){
+         if(isset($_SESSION['logged_in'])){
+          unset($_SESSION['logged_in']);
+          unset($_SESSION['user_email']);
+          unset($_SESSION['logged_name']);
+          header("location: login.php");
+          exit();
+         }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +22,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <title>login</title>
+    <title>User Account</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top bg-light py-2 shadow">
@@ -39,34 +55,65 @@
             <ul>
           </div>
         </div>
-      </nav>
-      <section class="my-5 py-5">
-        <div class="container text-center mt-3 pt-5">
-            <div class="font-weight-bold">
-                Login
+    </nav>
+    <section class="my-5 py-5">
+         <div class="row container mx-auto">
+            <div class="text-center mt-3 pt-5 col-lg-6 col-md-12 col-sm-12">
+                <h3 class="font-weight-bold">Account info</h3>
+                <hr class="mx-auto">
+                <div class="account-info">
+
+                    <p>Name <span><?php if(isset($_SESSION['user_name'])){ echo $_SESSION['user_name'];}?></span></p>
+                    <p>Email <span><?php if(isset($_SESSION['user_name'])){  echo $_SESSION['user_email'];}?></span></p>
+                    <p><a href="#orders" id="order-btn">Your Orders</a></p>
+                    <p><a href="account.php?loggout=1" id="logout-btn">Logout</a></p>
+                </div>
             </div>
-            <hr class="mx-auto">
+            <div class="col-lg-6 col-md-12 col-md-12">
+                <form action="" id="account-form">
+                    <h3>Change Password</h3>
+                    <hr>
+                    <div class="form-group">
+                        <label for="pass">Password</label>
+                        <input type="password" id="pass" placeholder="Password"  required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cpass">Confirm Password</label>
+                        <input type="password" id="cpass" placeholder="Confirm Password"  required>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn change-btn" value="Change Password">
+                    </div>
+                </form>
+            </div>
+         </div>
+    </section>
+    <section class="orders container my-2 py-5">
+        <div class="container mt-2">
+          <h2 class="font-weight-bolde text-center">Your Orders</h2>
+          <hr>
         </div>
-        <div class="mx-auto container">
-            <form action="" id="login-form">
-               <div class="form-group">
-                <label for="">Email</label>
-                <input type="email" class="form-control" id="login-email" name="email" placeholder="Email" required>
-               </div>
-               <div class="form-group">
-                <label for="">Password</label>
-                <input type="password" class="form-control" id="login-password" name="password" placeholder="Password" required>
-               </div>
-               <div class="form-group">
-                <input type="submit" class="btn" id="login-btn" value="login">
-               </div>
-               <div class="form-group">
-                <a href="" id="register-url">Don't have an account? Register</a>
-               </div>
-            </form>
-        </div>
-      </section>
-      <footer class="mt-5 p-3">
+        <table class="mt-5 pt-5">
+         <tr>
+             <th>Product</th>
+             <th>Date</th>
+         </tr>
+         <tr>
+             <td>
+                 <div class="product-info">
+                    <img src="./assets/shoes.png" alt="">
+                    <div>
+                        <p class="mt-3">Shoes</p>
+                    </div>
+                 </div>
+             </td>
+             <td>
+                <span>26-02-2024</span>
+             </td>
+         </tr>
+        </table>
+   </section>
+    <footer class="mt-5 p-3">
         <div class="row container mx-auto">
            <div class="col-lg-3 col-md-6 col-sm-12">
               <img src="./assets/logo.jpg" alt="">
@@ -124,7 +171,7 @@
            </div>
           </div>
         </div>
-     </footer>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
