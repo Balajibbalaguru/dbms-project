@@ -208,10 +208,10 @@ footer .copyright a:hover{
 }
 
 .adj{
-    height: 60% !important;
-    width: 30% !important;
-}
+    height: 300px !important;
+    width: 250px !important;
 
+}
 
 
 .cart table{
@@ -232,8 +232,8 @@ footer .copyright a:hover{
     padding: 10px 20px;
 }
 .cart td img{
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 100px;
     margin-right: 10px;
 }
 .cart td input{
@@ -339,13 +339,16 @@ td:last-child{
     color: white;
     background-color: coral;
 }
-.orders th:nth-child(2){
-    text-align: right;
+.orders th:nth-child(4){
+    /* text-align: right; */
 }
 .orders td{
     padding: 10px 20px;
 }
-
+.orders .order-details-btn{
+       color: white;
+       background-color: orange;
+}
 
 #register-form{
     width: 50%;

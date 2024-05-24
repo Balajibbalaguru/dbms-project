@@ -51,7 +51,7 @@ elseif(isset($_POST['edit_quantity'])){
 function calcart(){
     $total=0;
        foreach($_SESSION['cart'] as $key => $value){
-        $pd=$_SESSION['cart'][$key];
+        $pd=$_SESSION['cart'][$value];
         $pr=$pd['product_price'];
         $q=$pd['product_quantity'];
         $total = $total+($pr*$q);
@@ -105,7 +105,7 @@ function calcart(){
 
     <section class="cart container my-5 py-5">
         <div class="container mt-2">
-            <h2 class="font-weight-bolde text-center">Your Cart</h2>
+            <h2 class="font-weight-bold text-center">Your Cart</h2>
             <hr>
         </div>
         <table class="mt-5 pt-5">
@@ -115,33 +115,33 @@ function calcart(){
                 <th>Subtotal</th>
             </tr>
             <?php 
-            if(isset($_SESSION['cart']) && !empty($_SESSION['cart'])){
-                foreach($_SESSION['cart'] as $key => $value){ ?>
+            if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+                foreach ($_SESSION['cart'] as $product) { ?>
                     <tr>
                         <td>
                             <div class="product-info">
-                                <img src="assets/<?php echo $value['product_image'];?>" alt="">
+                                <img src="assets/<?php echo $product['product_image']; ?>" alt="">
                                 <div>
-                                    <p><?php echo $value['product_name'];?></p>
-                                    <small><span>Rs.</span><?php echo $value['product_price'];?></small><br>
+                                    <p><?php echo $product['product_name']; ?></p>
+                                    <small><span>Rs.</span><?php echo $product['product_price']; ?></small><br>
                                     <br>
                                     <form action="cart.php" method="POST">
-                                        <input type="hidden" name="product_id" value="<?php echo $value['product_id'];?>">
-                                        <input type="submit" name="remove_product" class="remove-btn" value="remove">
+                                        <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
+                                        <input type="submit" name="remove_product" class="remove-btn" value="Remove">
                                     </form>
                                 </div>
                             </div>
                         </td>
                         <td>
                             <form action="cart.php" method="POST">
-                                <input type="hidden" name="product_id" value="<?php echo $value['product_id'];?>">
-                                <input type="number" name="product_quantity" value="<?php echo $value['product_quantity'];?>">
-                                <input type="submit" class="edit-btn" value="edit" name="edit_quantity">
+                                <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
+                                <input type="number" name="product_quantity" value="<?php echo $product['product_quantity']; ?>">
+                                <input type="submit" class="edit-btn" value="Edit" name="edit_quantity">
                             </form>
                         </td>
                         <td>
                             <span>Rs.</span>
-                            <span class="price"><?php echo $value['product_quantity'] * $value['product_price']; ?></span>
+                            <span class="price"><?php echo $product['product_quantity'] * $product['product_price']; ?></span>
                         </td>
                     </tr>
                 <?php }
@@ -152,18 +152,18 @@ function calcart(){
             <table>
                 <tr>
                     <td>Total</td>
-                    <td>Rs.<?php     calcart(); echo $_SESSION['total'];?></td>
+                    <td>Rs.<?php echo $_SESSION['total']; ?></td>
                 </tr>
             </table>
         </div>
         <div class="checkout-container">
              <form action="checkout.php" method="POST">
-                <input type="submit" class="btn checkout-btn" value="checkout" name="checkout">
+                <input type="submit" class="btn checkout-btn" value="Checkout" name="checkout">
              </form>
         </div>
     </section>
 
-      <footer class="mt-5 p-3">
+    <footer class="mt-5 p-3">
         <div class="row container mx-auto">
            <div class="col-lg-3 col-md-6 col-sm-12">
               <img src="./assets/logo.jpg" alt="">
@@ -186,6 +186,7 @@ function calcart(){
              <h6>Address</h6>
              <p class="text">kamarajar Nagar,Tenkasi.</p>
            </div>
+           <div>
            <div>
              <h6>Phone</h6>
              <p class="text">+91 044-562-2244</p>

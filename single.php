@@ -61,7 +61,7 @@ else{
         <div class="row mt-5">
           <?php while($r = $s_product->fetch_assoc()) { ?>
             <div class="col-lg-5 col-md-6 col-sm-12">
-                <img src="./assets/<?php echo $r['product_image']; ?>" alt="" class="img-fluid w-100 pb-1 adj">
+                <img src="./assets/<?php echo $r['product_image']; ?>" alt="" class="mt-4 ms-5 adj">
             </div>
            
              <div class="col-lg-6 col-md-12 col-12">
@@ -175,16 +175,6 @@ else{
              <h6>Email</h6>
              <p class="text">info@support.com</p>
            </div>
-          </div>
-          <div class="footer-one col-lg-3 col-md-6 col-sm-12">
-             <h5 class="pb-2">Instagram</h5>
-             <div class="row">
-               <img src="./assets/footer1.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-               <img src="./assets/footer2.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-               <img src="./assets/footer3.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-               <img src="./assets/footer4.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-               <img src="./assets/footer5.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-             </div>
           </div>
         </div>
         <div class="copyright mt-5">
