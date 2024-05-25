@@ -405,3 +405,13 @@ td:last-child{
     width: 50% !important;
     height: 50% !important;
 }
+.buy-now a{
+  text-decoration: none;
+  color: white;
+
+}
+.buy-now{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: coral;
+}

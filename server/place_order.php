@@ -10,7 +10,7 @@ if(isset($_POST['place_order'])){
     $c = $_POST['city'];
     $ad = $_POST['address'];
     $oc = $_SESSION['total'];
-    $os = "on_hold";
+    $os = "Not Paid";
     $user_id = $_SESSION['user_id'];
     $od = date('Y-m-d H:i:s'); // Use 'Y' for four-digit year
 
