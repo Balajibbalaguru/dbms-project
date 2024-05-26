@@ -73,63 +73,71 @@ function calcart(){
 $total = calcart();
 ?>
 <?php include('./layouts/header.php'); ?>
-    <section class="cart container my-5 py-5">
-        <div class="container mt-2">
-            <h2 class="font-weight-bold text-center">Your Cart</h2>
-            <hr>
-        </div>
-        <table class="mt-5 pt-5">
-            <tr>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
-            </tr>
-            <?php 
-            if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
-                foreach ($_SESSION['cart'] as $product) { ?>
-                    <tr>
-                        <td>
-                            <div class="product-info">
-                                <img src="assets/<?php echo $product['product_image']; ?>" alt="">
-                                <div>
-                                    <p><?php echo $product['product_name']; ?></p>
-                                    <small><span>Rs.</span><?php echo $product['product_price']; ?></small><br>
-                                    <br>
-                                    <form action="cart.php" method="POST">
-                                        <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
-                                        <input type="submit" name="remove_product" class="remove-btn" value="Remove">
-                                    </form>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <form action="cart.php" method="POST">
-                                <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
-                                <input type="number" name="product_quantity" value="<?php echo $product['product_quantity']; ?>" min="1">
-                                <input type="submit" class="edit-btn" value="Edit" name="edit_quantity">
-                            </form>
-                        </td>
-                        <td>
-                            <span>Rs.</span>
-                            <span class="price"><?php echo $product['product_quantity'] * $product['product_price']; ?></span>
-                        </td>
-                    </tr>
-                <?php }
-            }
-            ?>
-        </table>
-        <div class="total">
-            <table>
+<section class="cart container my-5 py-5">
+    <div class="container">
+        <h2 class="font-weight-bold text-center">Your Cart</h2>
+        <hr>
+    </div>
+    <div class="table-responsive mt-5 pt-3">
+        <table class="table table-bordered">
+            <thead>
                 <tr>
-                    <td>Total</td>
-                    <td>Rs.<?php echo $total; ?></td>
+                    <th scope="col" class="text-black">Product</th>
+                    <th scope="col" class="text-black">Quantity</th>
+                    <th scope="col" class="text-black">Subtotal</th>
+                    <th scope="col" class="text-black">Action</th>
                 </tr>
-            </table>
+            </thead>
+            <tbody>
+                <?php 
+                if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+                    foreach ($_SESSION['cart'] as $product) { ?>
+                        <tr>
+                            <td>
+                                <div class="product-info d-flex align-items-center">
+                                    <img src="assets/<?php echo $product['product_image']; ?>" alt="" class="mr-3" style="max-width: 100px;">
+                                    <div>
+                                        <p><?php echo $product['product_name']; ?></p>
+                                        <small><span>Rs.</span><?php echo $product['product_price']; ?></small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <form action="cart.php" method="POST" class="d-flex align-items-center">
+                                    <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
+                                    <input type="number" name="product_quantity" value="<?php echo $product['product_quantity']; ?>" min="1" class="adjs">
+                                    <input type="submit" class="btn btn-primary btn-sm" value="Edit" name="edit_quantity">
+                                </form>
+                            </td>
+                            <td>
+                                <span>Rs.</span>
+                                <span class="price"><?php echo $product['product_quantity'] * $product['product_price']; ?></span>
+                            </td>
+                            <td>
+                                <form action="cart.php" method="POST">
+                                    <input type="hidden" name="product_id" value="<?php echo $product['product_id']; ?>">
+                                    <input type="submit" name="remove_product" class="btn btn-danger btn-sm" value="Remove">
+                                </form>
+                            </td>
+                        </tr>
+                    <?php }
+                } else { ?>
+                    <tr>
+                        <td colspan="4" class="text-center">Your cart is empty</td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+    <?php if (isset($_SESSION['cart']) && !empty($_SESSION['cart'])) { ?>
+        <div class="total text-center mt-4">
+            <h4>Total: Rs.<?php echo $total; ?></h4>
         </div>
-        <div class="checkout-container">
+        <div class="checkout-container text-center mt-3">
              <form action="checkout.php" method="POST">
-                <input type="submit" class="btn checkout-btn" value="Checkout" name="checkout">
+                <input type="submit" class="btn btn-primary" value="Checkout" name="checkout">
              </form>
         </div>
-    </section>
+    <?php } ?>
+</section>
 <?php include('./layouts/footer.php'); ?>

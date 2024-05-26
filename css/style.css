@@ -225,8 +225,6 @@ footer .copyright a:hover{
 .cart th{
     text-align: left;
     padding: 5px 3px;
-    color: white;
-    background-color: coral;
 }
 .cart td{
     padding: 10px 20px;
@@ -236,25 +234,7 @@ footer .copyright a:hover{
     height: 100px;
     margin-right: 10px;
 }
-.cart td input{
-     width: 40px;
-     height: 20px;
-     padding: 5px;
-     border: none;
-}
-.cart td input:focus{
-    outline: none;
-}
-.remove-btn{
-    color: coral;
-    text-decoration: none;
-    font-size: 14px;
-}
-.edit-btn{
-    color: coral;
-    text-decoration: none;
-    font-size: 14px;
-}
+
 .cart .product-info p{
     margin: 3px;
 }
@@ -278,20 +258,6 @@ td:last-child{
     justify-content: flex-end;
 }
 
-#login-form{
-    width: 50%;
-    margin: 5px auto;
-    text-align: center;
-    padding: 20px;
-}
-#login-form input{
-    width: 50%;
-    margin: 5px auto;
-}
-#login-form #login-btn{
-    background-color: coral;
-    color: white;
-}
 #register-url{
     color: coral;
 }
@@ -333,22 +299,13 @@ td:last-child{
     display: flex;
     flex-wrap: wrap;
 }
-.orders th{
-    text-align: left;
-    padding: 5px 10px;
-    color: white;
-    background-color: coral;
-}
 .orders th:nth-child(4){
     /* text-align: right; */
 }
 .orders td{
     padding: 10px 20px;
 }
-.orders .order-details-btn{
-       color: white;
-       background-color: orange;
-}
+
 
 #register-form{
     width: 50%;
@@ -382,10 +339,6 @@ td:last-child{
     margin-right: 40px;
 }
 
-#checkout-form #checkout-btn{
-         color:white;
-         background-color: coral;
-}
 
 #contact span{
     color: coral;
@@ -414,4 +367,12 @@ td:last-child{
     padding: 10px;
     border-radius: 10px;
     background-color: coral;
+}
+
+.adjs{
+    width: 15%;
+    padding: 5px;
+    margin-right: 30px;
+    outline: none;
+    border: none;
 }

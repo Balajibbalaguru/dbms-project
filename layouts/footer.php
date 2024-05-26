@@ -1,62 +1,36 @@
-<footer class="mt-5 pt-5">
-         <div class="row container mx-auto">
-            <div class="col-lg-3 col-md-6 col-sm-12">
-               <img src="./assets/logo.jpg" alt="">
-               <p class="pt-3 text">We provide the best product for the most affordable prices</p>
+<footer class="bg-dark text-light py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <h4 class="mb-4">About Us</h4>
+                <p class="text-muted">Discover the latest trends and shop the finest quality products at affordable prices. Your one-stop destination for all your shopping needs.</p>
             </div>
-            <div class="footer-one col-lg-3 col-md-6 col-sm-12">
-              <h5 class="pb-2">Featured</h5>
-              <ul class="">
-                <li><a href="">Men</a></li>
-                <li><a href="">Women</a></li>
-                <li><a href="">Boys</a></li>
-                <li><a href="">Girls</a></li>
-                <li><a href="">New Arrivals</a></li>
-                <li><a href="">Clothes</a></li>
-              </ul>
-           </div>
-           <div class="footer-one col-lg-3 col-md-6 col-sm-12">
-            <div class="pb-2 text">Contact Us</div>
-            <div>
-              <h6>Address</h6>
-              <p class="text">kamarajar Nagar,Tenkasi.</p>
+            <div class="col-md-4 mb-4">
+                <h4 class="mb-4">Quick Links</h4>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-light">Home</a></li>
+                    <li><a href="#" class="text-light">Shop</a></li>
+                    <li><a href="#" class="text-light">About Us</a></li>
+                    <li><a href="#" class="text-light">Contact Us</a></li>
+                </ul>
             </div>
-            <div>
-              <h6>Phone</h6>
-              <p class="text">+91 044-562-2244</p>
+            <div class="col-md-4 mb-4">
+                <h4 class="mb-4">Contact Us</h4>
+                <ul class="list-unstyled">
+                    <li><i class="fas fa-map-marker-alt me-2"></i>kamarajar Nagar, Tenkasi</li>
+                    <li><i class="fas fa-phone-alt me-2"></i>+91 044-562-2244</li>
+                    <li><i class="fas fa-envelope me-2"></i>info@support.com</li>
+                </ul>
             </div>
-            <div>
-              <h6>Email</h6>
-              <p class="text">info@support.com</p>
-            </div>
-           </div>
-           <div class="footer-one col-lg-3 col-md-6 col-sm-12">
-              <h5 class="pb-2">Instagram</h5>
-              <div class="row">
-                <img src="./assets/footer1.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-                <img src="./assets/footer2.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-                <img src="./assets/footer3.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-                <img src="./assets/footer4.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-                <img src="./assets/footer5.jpg" alt="" class="img-fluid w-25 h-100 m-2">
-              </div>
-           </div>
-         </div>
-         <div class="copyright mt-5">
-           <div class="row container mx-auto">
-            <div class="col-lg-3 col-md-6 col-sm-12">
-              <img src="./assets/pay.jpg" alt="">
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12 text-nowrap mb-4 me-4">
-              <p class="text">eCommerce &copy; 2024 All Right Reserved</p>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-              <a href="#"><i class="fab fa-facebook"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-twitter"></i></a>
-            </div>
-           </div>
-         </div>
-      </footer>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        </div>
+        <hr class="bg-light">
+        <div class="text-center text-muted">
+            <p class="mb-0">Follow us on <i class="fab fa-facebook-f"></i> <i class="fab fa-twitter"></i> <i class="fab fa-instagram"></i></p>
+            <p>&copy; 2024 eCommerce. All Rights Reserved</p>
+        </div>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7/zEnb8PAFJ/XHjtP2h0VxFqXsdE3vUG9zHiRKnUPn6Z/iIOTu6mbJX7RoX4lMN8" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-cVKIPhGevVYgD1Anm/znrTvtLpW2f8A2kaelPkYB6a1l/o2K7N4p1gZQfNcJoM1X" crossorigin="anonymous"></script>
 </body>
 </html>

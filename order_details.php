@@ -29,50 +29,44 @@ function calorder($od){
 }
  
 ?>
- <?php include('./layouts/header.php');?>    
- <section class="orders container my-2 py-5">
-        <div class="container mt-2">
-          <h2 class="font-weight-bolde text-center">Your Orders</h2>
-          <hr>
+<?php include('./layouts/header.php');?>    
+<section class="orders container my-5 py-5">
+    <div class="container">
+        <h2 class="font-weight-bold text-center mb-4">Your Orders</h2>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach($od as $r) { ?>
+                        <tr>
+                            <td>
+                                <div class="product-info d-flex align-items-center">
+                                    <img src="assets/<?php echo $r['product_image']; ?>" alt="" class="mr-3" style="max-width: 100px;">
+                                    <p class="mt-3"><?php echo $r['product_name']; ?></p>
+                                </div>
+                            </td>
+                            <td><?php echo $r['product_price']; ?></td>
+                            <td><?php echo $r['product_quantity']; ?></td>
+                        </tr>
+                    <?php } ?>
+                </tbody>
+            </table>
         </div>
-        <table class="mt-5 pt-5">
-         <tr>
-             <th>Product</th>
-             <th>Price</th>
-             <th>Quantity</th>
-         </tr>
-         <?php foreach($od as $r) { ?>
-         <tr>
-            <td>
-              <div class="product-info">
-                <img src="assets/<?php echo $r['product_image']; ?>" alt="">
-                <div>
-                  <p class="mt-3"><?php echo $r['product_name']; ?></p>
-                </div>
-              </div>
-             </td>
-             <td>
-             <span><?php echo $r['product_price']; ?></span>
-             </td>
-             <td>
-              <span><?php echo $r['product_quantity']; ?></span>
-             </td>
-             <td>
-              <form action="order_details.php" method="POST">
-                <input type="hidden" value="<?php echo $r['order_id']; ?>" name="order_id">
-              </form>
-             </td>
-         </tr>
-         <?php } ?>
-         
-        </table>
-        <?php 
-        if($os=="Not Paid"){?>
-         <form action="payment.php" stye="float:right;" method="POST">
-          <input type="hidden" value="<?php echo $tod; ?>" name="total_order_price">
-          <input type="hidden" name="order_status" value="<?php echo $os; ?>">
-            <input type="submit" value="Pay Now" class="btn btn-primary" name='order_pay'>
-         </form>
-        <?php }?>
-   </section>
+        <?php if($os=="Not Paid"){ ?>
+            <div class="text-right">
+                <form action="payment.php" method="POST">
+                    <input type="hidden" value="<?php echo $tod; ?>" name="total_order_price">
+                    <input type="hidden" name="order_status" value="<?php echo $os; ?>">
+                    <button type="submit" class="btn btn-primary">Pay Now</button>
+                </form>
+            </div>
+        <?php } ?>
+    </div>
+</section>
 <?php include('./layouts/footer.php');?>

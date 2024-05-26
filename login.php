@@ -47,32 +47,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Close the database connection (assuming it's not handled in connection.php)
 $conn->close();
 ?>
- <?php include('./layouts/header.php');?>
-      <section class="my-5 py-5">
-        <div class="container text-center mt-3 pt-5">
-            <div class="font-weight-bold">
-                Login
+<?php include('./layouts/header.php'); ?>
+
+<section class="my-5 py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-6">
+                <div class="card shadow">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-4">Login</h2>
+                        <form action="login.php" id="login-form" method="POST">
+                        <p class="text-danger"><?php if(isset($_GET['error'])){ echo $_GET['error']; }?></p>
+                            <div class="mb-3">
+                                <label for="login-email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="login-email" name="email" placeholder="Enter your email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="login-password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="login-password" name="pass" placeholder="Enter your password" required>
+                            </div>
+                            <div class="mb-3">
+                                <button type="submit" class="btn btn-primary rounded w-100">Login</button>
+                            </div>
+                            <div class="mb-3 text-center">
+                                <p class="text-muted">Don't have an account? <a href="register.php" id="register-url" class="text-primary">Register here</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <hr class="mx-auto">
         </div>
-        <div class="mx-auto container">
-            <form action="login.php" id="login-form" method="POST">
-              <p style="color:red;"><?php if(isset($_GET['error'])){ echo $_GET['error']; }?></p>
-               <div class="form-group">
-                <label for="">Email</label>
-                <input type="email" class="form-control" id="login-email" name="email" placeholder="Email" required>
-               </div>
-               <div class="form-group">
-                <label for="">Password</label>
-                <input type="password" class="form-control" id="login-password" name="pass" placeholder="Password" required>
-               </div>
-               <div class="form-group">
-                <input type="submit" class="btn" id="login-btn" value="login" name="login">
-               </div>
-               <div class="form-group">
-                <a href="register.php" id="register-url">Don't have an account? Register</a>
-               </div>
-            </form>
-        </div>
-      </section>
-<?php include('./layouts/footer.php');?>
+    </div>
+</section>
+
+<?php include('./layouts/footer.php'); ?>
+
