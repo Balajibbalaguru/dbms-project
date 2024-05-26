@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!empty($_SESSION['cart'])&& isset($_POST['checkout'])){
+if(!empty($_SESSION['cart'])){
        
 }
 else{
@@ -15,6 +15,11 @@ else{
         </div>
         <div class="mx-auto container">
             <form action="./server/place_order.php" method="POST" id="checkout-form">
+              <p class="text-center text-primary" ><?php if(isset($_GET['message'])){ echo $_GET['message'];} ?>
+              <?php if(isset($_GET['message'])){ ?>
+                <a href="login.php" class=""btn btn-primary>Login</a>
+              <?php }?>  
+            </p>
                 <div class="form-group checkout-sm-ele">
                     <label for="">Name</label>
                     <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>

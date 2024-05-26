@@ -97,4 +97,5 @@ else{
             </div>
         </div>
      </section>
+     <script src="./js/script.js"></script>
 <?php include('./layouts/header.php');?>

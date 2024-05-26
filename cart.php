@@ -24,7 +24,7 @@ if(isset($_POST['cart'])){
                 'product_image' => $_POST['product_image'],
                 'product_quantity' => $_POST['product_quantity']
             );
-            $_SESSION['cart'][] = $par; 
+            $_SESSION['cart'][$pid] = $par; 
         }
     } else {
         // For the first product
@@ -36,7 +36,7 @@ if(isset($_POST['cart'])){
             'product_image' => $_POST['product_image'],
             'product_quantity' => $_POST['product_quantity']
         );
-        $_SESSION['cart'][] = $par;
+        $_SESSION['cart'][$pid] = $par;
     }
 } elseif(isset($_POST['remove_product'])){
     $pid = $_POST['product_id'];

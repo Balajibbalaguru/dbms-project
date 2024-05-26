@@ -12,11 +12,22 @@ if (isset($_POST['order_details']) && isset($_POST['order_id'])) {
   $st = $conn->prepare("SELECT * FROM order_items WHERE order_id=?");
   $st->bind_param('i', $oid);
   $st->execute();
-  $od = $st->get_result(); // Changed get_results() to get_result()
+  $od = $st->get_result();
+  $tod= calorder($od); // Changed get_results() to get_result()
 } else {
   header("location: account.php");
   exit;
 }
+function calorder($od){
+  $total = 0;
+  foreach($od as $r){
+    $pp=$r['product_price'];
+    $pq=$r['product_quantity'];
+    $total+=($pp*$pq);
+  }
+  return $total;
+}
+ 
 ?>
  <?php include('./layouts/header.php');?>    
  <section class="orders container my-2 py-5">
@@ -30,7 +41,7 @@ if (isset($_POST['order_details']) && isset($_POST['order_id'])) {
              <th>Price</th>
              <th>Quantity</th>
          </tr>
-         <?php while ($r = $od->fetch_assoc()) { ?>
+         <?php foreach($od as $r) { ?>
          <tr>
             <td>
               <div class="product-info">
@@ -57,8 +68,10 @@ if (isset($_POST['order_details']) && isset($_POST['order_id'])) {
         </table>
         <?php 
         if($os=="Not Paid"){?>
-         <form action="" stye="float:right;">
-            <input type="submit" value="Pay Now" class="btn btn-primary">
+         <form action="payment.php" stye="float:right;" method="POST">
+          <input type="hidden" value="<?php echo $tod; ?>" name="total_order_price">
+          <input type="hidden" name="order_status" value="<?php echo $os; ?>">
+            <input type="submit" value="Pay Now" class="btn btn-primary" name='order_pay'>
          </form>
         <?php }?>
    </section>
