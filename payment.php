@@ -9,7 +9,7 @@ if(isset($_POST['order_pay'])){
     <section class="my-1 py-1">
         <div class="container text-center mt-3 pt-5">
                 <h1>Payment</h1>
-            <hr class="mx-auto">
+            <br>
         </div>
         <div class="mx-auto container text-center">
            <?php if(isset($_SESSION['total']) && $_SESSION['total']!=0){?>

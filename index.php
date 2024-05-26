@@ -85,7 +85,7 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <h5 class="card-title"><?php echo $r['product_name'];?></h5>
-                    <h4 class="card-text"><?php echo $r['product_price'];?></h4>
+                    <h4 class="card-text">Rs.<?php echo $r['product_price'];?></h4>
                     <a href="<?php echo 'single.php?product_id='.$r['product_id']?>" class="btn btn-primary">Buy Now</a>
                 </div>
             </div>
@@ -106,7 +106,7 @@
 <section id="cloths" class="container py-5">
     <div class="text-center">
         <h2>Dresses & Coats</h2>
-        <hr>
+        <br>
         <p>Here you can check out amazing clothes</p>
     </div>
     <div class="row">
@@ -124,7 +124,7 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <h5 class="card-title"><?php echo $r['product_name'];?></h5>
-                    <h4 class="card-text"><?php echo $r['product_price'];?></h4>
+                    <h4 class="card-text">Rs.<?php echo $r['product_price'];?></h4>
                     <a href="<?php echo 'single.php?product_id='.$r['product_id']?>" class="btn btn-primary">Buy Now</a>
                 </div>
             </div>
@@ -153,7 +153,7 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <h5 class="card-title"><?php echo $r['product_name'];?></h5>
-                    <h4 class="card-text"><?php echo $r['product_price'];?></h4>
+                    <h4 class="card-text">Rs.<?php echo $r['product_price'];?></h4>
                     <a href="<?php echo 'single.php?product_id='.$r['product_id']?>" class="btn btn-primary">Buy Now</a>
                 </div>
             </div>

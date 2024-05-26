@@ -76,7 +76,7 @@ $total = calcart();
 <section class="cart container my-5 py-5">
     <div class="container">
         <h2 class="font-weight-bold text-center">Your Cart</h2>
-        <hr>
+    <br>
     </div>
     <div class="table-responsive mt-5 pt-3">
         <table class="table table-bordered">
